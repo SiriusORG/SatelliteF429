@@ -51,9 +51,6 @@
 */
 uint32_t u32_ThousandMillisecondLoop = 0;
 uint32_t u32_TenMilliSecondLoop_ms = 0;
-
-const char* message = "Hello UDP message!\n\r";
-ip_addr_t PC_IPADDR;
 /*
 *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 * INTERNAL (STATIC) VARIABLES DEFINITION/DECLARATION
