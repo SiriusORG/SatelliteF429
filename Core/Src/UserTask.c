@@ -34,9 +34,10 @@
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 #define APP_TASK_CALL_PERIOD        (500)                              /* given time in ms */
-#define THOUSANDMILLISECONDS 		(750)
+#define SEVENHUNDREDMILLISECONDS 	(700)
 #define HUNDREDMILLISECONDS 		(100)
 #define TENMILLISECONDS 			(10)
+#define ONESECOND					(1000)
 
 /*
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -49,8 +50,9 @@
  * EXTERNAL VARIABLES DEFINITION
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-uint32_t u32_ThousandMillisecondLoop = 0;
+uint32_t u32_SevenHundredMillisecondLoop = 0;
 uint32_t u32_HundredMilliSecondLoop_ms = 0;
+uint32_t u32_SecondLoop_ms = 0;
 /*
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * INTERNAL (STATIC) VARIABLES DEFINITION/DECLARATION
@@ -100,14 +102,19 @@ void UserTaskInit(void const *argument) {
 void UserTaskLoop(void const *argument) {
 	/* blink the Amber LED for 50ms to indicate the OBC is running */
 	for (;;) {
-		if (HAL_GetTick() - u32_ThousandMillisecondLoop > THOUSANDMILLISECONDS) {
+		if (HAL_GetTick() - u32_SevenHundredMillisecondLoop > SEVENHUNDREDMILLISECONDS) {
 			HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
-			u32_ThousandMillisecondLoop = HAL_GetTick();
+			u32_SevenHundredMillisecondLoop = HAL_GetTick();
 		}
 
 		if (HAL_GetTick() - u32_HundredMilliSecondLoop_ms > HUNDREDMILLISECONDS) {
 			HAL_GPIO_TogglePin(LD1_GPIO_Port, LD1_Pin);
 			u32_HundredMilliSecondLoop_ms = HAL_GetTick();
+		}
+
+		if(HAL_GetTick() - u32_SecondLoop_ms > ONESECOND){
+			HAL_UART_Transmit(&huart3, (uint8_t*)"Hello from UserTaskLoop\r\n", 25, 20);
+			u32_SecondLoop_ms = HAL_GetTick();
 		}
 
 		osDelay(5);

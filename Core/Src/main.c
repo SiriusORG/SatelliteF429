@@ -20,7 +20,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 #include "cmsis_os.h"
-#include "lwip.h"
 #include "usart.h"
 #include "usb_otg.h"
 #include "gpio.h"

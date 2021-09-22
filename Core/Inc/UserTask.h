@@ -30,6 +30,7 @@
 #include "stdint.h"
 #include "stdbool.h"
 #include "cmsis_os.h"
+#include "usart.h"
 #include <string.h>
 
 /*
