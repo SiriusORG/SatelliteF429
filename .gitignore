@@ -1,6 +1,8 @@
 .settings/**
 .mxproject
 
+/cmake-build-debug
+
 # https://github.com/github/gitignore/blob/master/C.gitignore
 
 # Prerequisites
