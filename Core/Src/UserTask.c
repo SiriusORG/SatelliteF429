@@ -28,6 +28,7 @@
 
 #include  "UserTask.h"
 
+
 /*
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * INTERNAL DEFINES
@@ -38,6 +39,7 @@
 #define HUNDREDMILLISECONDS 		(100)
 #define TENMILLISECONDS 			(10)
 #define ONESECOND					(1000)
+#define UART_RX_BUF_SIZE			255
 
 /*
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -58,7 +60,7 @@ uint32_t u32_SecondLoop_ms = 0;
  * INTERNAL (STATIC) VARIABLES DEFINITION/DECLARATION
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
-
+uint8_t uart_rx_buf[UART_RX_BUF_SIZE];
 /*
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * INTERNAL (STATIC) ROUTINES DECLARATION
@@ -85,6 +87,7 @@ void UserTaskInit(void const *argument) {
 	/*
 	 * Initialise Device Here
 	 */
+	HAL_UARTEx_ReceiveToIdle_DMA(&huart3, uart_rx_buf, UART_RX_BUF_SIZE);
 	UserTaskLoop();
 
 }
@@ -113,13 +116,17 @@ void UserTaskLoop(void const *argument) {
 		}
 
 		if(HAL_GetTick() - u32_SecondLoop_ms > ONESECOND){
-			HAL_UART_Transmit(&huart3, (uint8_t*)"Hello from UserTaskLoop\r\n", 25, 20);
+			HAL_UART_Transmit(&huart3, (uint8_t*)"Hellooo from UserTaskLoop\r\n", 27, 20);
 			u32_SecondLoop_ms = HAL_GetTick();
 		}
 
 		osDelay(5);
 	}
 
+}
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
+	HAL_UART_Transmit(&huart3, (uint8_t*)"Received\r\n", 10, 20);
 }
 
 /*
