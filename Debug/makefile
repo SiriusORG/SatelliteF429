@@ -65,8 +65,8 @@ all: main-build
 main-build: SatelliteF429.elf secondary-outputs
 
 # Tool invocations
-SatelliteF429.elf: $(OBJS) $(USER_OBJS) C:\Users\etien\Desktop\Sirius\SatelliteF429\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "SatelliteF429.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\etien\Desktop\Sirius\SatelliteF429\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SatelliteF429.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+SatelliteF429.elf: $(OBJS) $(USER_OBJS) C:\Users\Etienne\ Lariviere\Desktop\Sirius\SatelliteF429\STM32F429ZITX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "SatelliteF429.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\Etienne Lariviere\Desktop\Sirius\SatelliteF429\STM32F429ZITX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SatelliteF429.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

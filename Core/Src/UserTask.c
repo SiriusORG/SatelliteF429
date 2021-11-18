@@ -104,6 +104,7 @@ void UserTaskInit(void const *argument) {
  */
 void UserTaskLoop(void const *argument) {
 	/* blink the Amber LED for 50ms to indicate the OBC is running */
+	//__HAL_DMA_DISABLE_IT(&huart3, DMA_IT_HT);
 	for (;;) {
 		if (HAL_GetTick() - u32_SevenHundredMillisecondLoop > SEVENHUNDREDMILLISECONDS) {
 			HAL_GPIO_TogglePin(LD2_GPIO_Port, LD2_Pin);
@@ -116,7 +117,7 @@ void UserTaskLoop(void const *argument) {
 		}
 
 		if(HAL_GetTick() - u32_SecondLoop_ms > ONESECOND){
-			HAL_UART_Transmit(&huart3, (uint8_t*)"Hellooo from UserTaskLoop\r\n", 27, 20);
+			HAL_UART_Transmit(&huart3, (uint8_t*)"Hello from UserTaskLoop\r\n", 25, 20);
 			u32_SecondLoop_ms = HAL_GetTick();
 		}
 
@@ -125,8 +126,10 @@ void UserTaskLoop(void const *argument) {
 
 }
 
-void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
+void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size){
 	HAL_UART_Transmit(&huart3, (uint8_t*)"Received\r\n", 10, 20);
+	HAL_UARTEx_ReceiveToIdle_DMA(&huart3, (uint8_t*) uart_rx_buf, UART_RX_BUF_SIZE);
+    __HAL_DMA_DISABLE_IT(&hdma_usart3_rx, DMA_IT_HT);
 }
 
 /*
