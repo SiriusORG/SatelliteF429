@@ -87,7 +87,6 @@ void UserTaskInit(void const *argument) {
 	 */
 	UserTaskLoop();
 
-
 }
 
 /*!
