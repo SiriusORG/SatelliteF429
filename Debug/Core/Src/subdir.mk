@@ -9,6 +9,7 @@ C_SRCS += \
 ../Core/Src/dma.c \
 ../Core/Src/freertos.c \
 ../Core/Src/gpio.c \
+../Core/Src/groundStationComm.c \
 ../Core/Src/i2c.c \
 ../Core/Src/main.c \
 ../Core/Src/stm32f4xx_hal_msp.c \
@@ -25,6 +26,7 @@ OBJS += \
 ./Core/Src/dma.o \
 ./Core/Src/freertos.o \
 ./Core/Src/gpio.o \
+./Core/Src/groundStationComm.o \
 ./Core/Src/i2c.o \
 ./Core/Src/main.o \
 ./Core/Src/stm32f4xx_hal_msp.o \
@@ -41,6 +43,7 @@ C_DEPS += \
 ./Core/Src/dma.d \
 ./Core/Src/freertos.d \
 ./Core/Src/gpio.d \
+./Core/Src/groundStationComm.d \
 ./Core/Src/i2c.d \
 ./Core/Src/main.d \
 ./Core/Src/stm32f4xx_hal_msp.d \

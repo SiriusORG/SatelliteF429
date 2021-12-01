@@ -27,6 +27,8 @@
  */
 
 #include  "UserTask.h"
+#include "stdio.h"
+#include "groundStationComm.h"
 
 
 /*
@@ -61,6 +63,9 @@ uint32_t u32_SecondLoop_ms = 0;
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 uint8_t uart_rx_buf[UART_RX_BUF_SIZE];
+uint8_t gsMessage[255];
+uint8_t uartBuff[200];
+uint16_t printSize;
 /*
  *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  * INTERNAL (STATIC) ROUTINES DECLARATION
@@ -88,6 +93,19 @@ void UserTaskInit(void const *argument) {
 	 * Initialise Device Here
 	 */
 	HAL_UARTEx_ReceiveToIdle_DMA(&huart3, uart_rx_buf, UART_RX_BUF_SIZE);
+
+	gsMessage[0] = 0x7F;
+	gsMessage[1] = 4;
+	gsMessage[2] = 0;
+	gsMessage[3] = 1;
+	gsMessage[4] = 2;
+	gsMessage[5] = 1;
+	gsMessage[6] = 2;
+	gsMessage[7] = 3;
+	gsMessage[8] = 4;
+	gsMessage[9] = 0x32;
+	gsMessage[10] = 0x73;
+
 	UserTaskLoop();
 
 }
@@ -117,13 +135,20 @@ void UserTaskLoop(void const *argument) {
 		}
 
 		if(HAL_GetTick() - u32_SecondLoop_ms > ONESECOND){
-			HAL_UART_Transmit(&huart3, (uint8_t*)"Hello from UserTaskLoop\r\n", 25, 20);
+			//HAL_UART_Transmit(&huart3, (uint8_t*)"Hello from UserTaskLoop\r\n", 25, 20);
+			for (int i = 0; i < sizeof(gsMessage) ;i++){
+				uint8_t response = gsCommManagerProcessBuffer(gsMessage[i]);
+				if (response == 1){
+					printSize = snprintf(uartBuff, sizeof(uartBuff),"**Received from GS**\r\nPayload Length: %d\r\nSquence: %d\r\nFlag: %d\r\nCommand: %d\r\nPayload: %d %d %d %d\r\nCRC16: %x%x\r\n\n", gsCommPacket.data[0], gsCommPacket.data[1], gsCommPacket.data[2], gsCommPacket.data[3], gsCommPacket.data[4], gsCommPacket.data[5], gsCommPacket.data[6], gsCommPacket.data[7], gsCommPacket.data[8], gsCommPacket.data[9]);
+					HAL_UART_Transmit(&huart3, uartBuff, printSize, 20);
+				}else if (response == 2){
+					HAL_UART_Transmit(&huart3, (uint8_t*)"BAD CRC\r\n", 9, 20);
+				}
+			}
 			u32_SecondLoop_ms = HAL_GetTick();
 		}
-
 		osDelay(5);
 	}
-
 }
 
 void HAL_UARTEx_RxEventCallback(UART_HandleTypeDef *huart, uint16_t Size){

@@ -49,7 +49,7 @@ Core/Src/UserTask.o: ../Core/Src/UserTask.c ../Core/Inc/UserTask.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h \
- ../Core/Inc/usart.h
+ ../Core/Inc/usart.h ../Core/Inc/groundStationComm.h
 
 ../Core/Inc/UserTask.h:
 
@@ -156,3 +156,5 @@ Core/Src/UserTask.o: ../Core/Src/UserTask.c ../Core/Inc/UserTask.h \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h:
 
 ../Core/Inc/usart.h:
+
+../Core/Inc/groundStationComm.h:
