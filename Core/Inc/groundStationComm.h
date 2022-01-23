@@ -1,13 +1,31 @@
-/*
- * groundStationComm.h
- *
- *  Created on: 1 déc. 2021
- *      Author: Étienne Larivière
- */
-
+/*!
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* @file groundStationComm.h
+* @brief Header of groundStationComm.c
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* @author            Étienne Larivière
+* @version           1.0.0
+* @date              2021.12.01
+*
+* @copyright         (C) Copyright QMSat
+*
+*                    Contents and presentations are protected world-wide.
+*                    Any kind of using, copying etc. is prohibited without prior permission.
+*                    All rights - incl. industrial property rights - are reserved.
+*
+* @history
+* @revision{         1.0.0  , 2021.12.0, author Étienne Larivière, Initial revision }
+* @endhistory
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 #ifndef INC_GROUNDSTATIONCOMM_H_
 #define INC_GROUNDSTATIONCOMM_H_
 
+/*
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* INCLUDES
+*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+*/
 #include "stdint.h"
 
 #define START 0x7F

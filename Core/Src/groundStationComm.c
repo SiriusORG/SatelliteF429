@@ -1,8 +1,28 @@
-/*
- * groundStationComm.c
+/*!
+ *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * @file AppTasks.c
+ * @brief Implementation of common task primitives
+ *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * @author            Étienne Larivière
+ * @version           1.0.0
+ * @date              2021.12.01
  *
- *  Created on: 1 déc. 2021
- *      Author: Étienne Larivière
+ * @copyright         (C) Copyright Endurosat
+ *
+ *                    Contents and presentations are protected world-wide.
+ *                    Any kind of using, copying etc. is prohibited without prior permission.
+ *                    All rights - incl. industrial property rights - are reserved.
+ *
+ * @history
+ * @revision{         1.0.0  , 2021.12.01, author Étienne Larivière, Initial revision }
+ * @endhistory
+ *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ */
+
+/*
+ *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ * INCLUDES
+ *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
  */
 
 #include "groundStationComm.h"
