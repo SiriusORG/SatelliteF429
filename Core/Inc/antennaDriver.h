@@ -28,8 +28,9 @@
 //-----------------------Variables-------------------------------
 #define A_MICROCONTROLLER_ADDR 0x30
 #define B_MICROCONTROLLER_ADDR 0x31
-#define ACTIVE_MICROCONTROLLER 0x30
+//#define ACTIVE_MICROCONTROLLER 0x30
 
+uint8_t ANTS_ADDR = 0x30;
 
 //-----------------------Command codes---------------------------
 // Commands
@@ -61,6 +62,9 @@
 
 
 //---------------------------------Function Prototypes--------------------------------
+
+bool setActiveMicrocontroller(int microcontrollerIndex);
+
 // Commands
 bool microControllerReset();
 bool armAntennaSystem();
