@@ -160,6 +160,8 @@ uint16_t* getAntennaSystemTemperature(){
 	uint8_t command = GET_ANTENNA_SYSTEM_TEMPERATURE;
 	uint16_t* telemetry;
 
+
+
 	// TODO: pomal toute i guess
 
 	// Envoyer la commande
@@ -174,8 +176,16 @@ uint16_t* getAntennaSystemTemperature(){
 	}
 }
 
+//***CODE FÉLIX START HERE (Étienne tu peux valider si tu veux)***
 
-uint16_t* getDeploymentStatus(){
+
+uint16_t* getDeploymentStatus()
+/*
+ À titre de validation, je vais écrire ici le raisonnement de mes démarche et d'interprétation
+ Ainsi, pour cette fonction, la réponse en deux bite correspond au tableau, le MSB étant le premier byte (Most Significatif Byte) et se LSB étant le second byte (Less Significatif Byte)
+ Alors, on commence par envoyer la commande par la fonction HAL
+ */
+{
 	uint8_t command = GET_DEPLOYMENT_STATUS;
 	return 0x0;
 }
