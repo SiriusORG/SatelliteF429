@@ -46,88 +46,132 @@ bool setActiveMicrocontroller(int microcontrollerIndex){
 bool microControllerReset(){
 	uint8_t command = MICROCONTROLLER_RESET;
 
-	// testing
-	return false;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool armAntennaSystem(){
 	uint8_t command = ARM_ANTENNA_SYSTEM;
-	return false;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool disarmAntennaSystem(){
 	uint8_t command = DISARM_ANTENNA_SYSTEM;
-	return false;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna1(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_1;
-	return false;
+
+	// TODO: add parameters to command
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna2(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_2;
-	return false;
+
+	// TODO: add parameters to command
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna3(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_3;
-	return false;
+
+	// TODO: add parameters to command
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna4(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_4;
-	return false;
+
+	// TODO: add parameters to command
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool automatedAntennaDeployment(uint8_t* maxActivationTime){
 	uint8_t command = AUTOMATED_ANTENNA_DEPLOYMENT;
-	return false;
+
+	// TODO: add parameters to command
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna1WithOverride(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_1_OVERRIDE;
-	return false;
+
+	// TODO: add parameters to command
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna2WithOverride(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_2_OVERRIDE;
-	return false;
+
+	// TODO: add parameters to command
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna3WithOverride(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_3_OVERRIDE;
-	return false;
+
+	// TODO: add parameters to command
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna4WithOverride(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_4_OVERRIDE;
-	return false;
+
+	// TODO: add parameters to command
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool cancelDeploymentActivation(){
 	uint8_t command = CANCEL_DEPLOYMENT_ACTIVATION;
-	return false;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
+					(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 
 ///---------------------------------Telemetry Function Prototypes--------------------------------
+
 uint16_t* getAntennaSystemTemperature(){
 	uint8_t command = GET_ANTENNA_SYSTEM_TEMPERATURE;
-	return 0x0;
+	uint16_t* telemetry;
+
+	// TODO: pomal toute i guess
+
+	// Envoyer la commande
+	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
+		// Aller lire valeur de retour
+		if (HAL_I2C_Mem_Read(&hi2c1, (ANTS_ADDR << 1) & 0xFF, 0x0, 1, telemetry, 2, HAL_MAX_DELAY) == HAL_OK)
+			return telemetry;
+		else
+			return 0x0; // Some Error code?
+	}else{
+		return 0x0; // Another Error code??????
+	}
 }
 
 

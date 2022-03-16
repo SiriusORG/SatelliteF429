@@ -17,7 +17,7 @@
 bool obtRxWatchdogResetRx() {
 	uint8_t command = WATCHDOG_RESET;
 	return HAL_I2C_Master_Transmit(&hi2c1, (OBT_ADDR_RX << 1) & 0xFF,
-			(uint8_t*) WATCHDOG_RESET, 1, 100) == HAL_OK;
+			(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 bool obtSoftwareResetRx() {
