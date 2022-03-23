@@ -49,94 +49,82 @@ bool setActiveMicrocontroller(int microcontrollerIndex){
 bool microControllerReset(){
 	uint8_t command = MICROCONTROLLER_RESET;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-					(uint8_t*) command, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool armAntennaSystem(){
 	uint8_t command = ARM_ANTENNA_SYSTEM;
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-					(uint8_t*) command, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool disarmAntennaSystem(){
 	uint8_t command = DISARM_ANTENNA_SYSTEM;
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-					(uint8_t*) command, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint8_t*) command, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna1(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_1;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-					(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna2(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_2;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-			(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna3(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_3;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-			(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna4(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_4;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-			(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
 }
 
 
 bool automatedAntennaDeployment(uint8_t* maxActivationTime){
 	uint8_t command = AUTOMATED_ANTENNA_DEPLOYMENT;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-			(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna1WithOverride(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_1_OVERRIDE;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-			(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna2WithOverride(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_2_OVERRIDE;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-			(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna3WithOverride(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_3_OVERRIDE;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-			(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,	(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
 }
 
 
 bool deployAntenna4WithOverride(uint8_t* maxActivationTime){
 	uint8_t command = DEPLOY_ANTENNA_4_OVERRIDE;
 
-	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF,
-			(uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
+	return HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint16_t*) command << 8 | maxActivationTime, 1, 100) == HAL_OK;
 }
 
 
@@ -155,14 +143,14 @@ bool cancelDeploymentActivation(){
 // 2) Go read the telemetry using Master_Receive and storing the value in a response pointer.
 //    The ANTS_ADDR must bit shifted to the left and have a 1 at the LSB to indicate a read.
 
-uint16_t* getAntennaSystemTemperature(){
+uint16_t getAntennaSystemTemperature(){
 	uint8_t command = GET_ANTENNA_SYSTEM_TEMPERATURE;
 	uint16_t* response;
 
 	// Sending the command
 	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
 		// Reading the return value
-		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, 1, response, 2, 100) == HAL_OK)
+		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, response, 2, 100) == HAL_OK)
 			return *response;
 		else
 			return 0x0; // ERROR CODE: Failed to read return value.
@@ -193,7 +181,7 @@ uint8_t getAntenna1DeploymentSystemActivationCount(){
 	// Sending the command
 	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
 		// Reading the return value
-		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, 1, response, 1, 100) == HAL_OK)
+		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, response, 1, 100) == HAL_OK)
 			return *response;
 		else
 			return 0x0; // ERROR CODE: Failed to read return value.
@@ -210,7 +198,7 @@ uint8_t getAntenna2DeploymentSystemActivationCount(){
 	// Sending the command
 	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
 		// Reading the return value
-		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, 1, response, 1, 100) == HAL_OK)
+		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, response, 1, 100) == HAL_OK)
 			return *response;
 		else
 			return 0x0; // ERROR CODE: Failed to read return value.
@@ -227,7 +215,7 @@ uint8_t getAntenna3DeploymentSystemActivationCount(){
 	// Sending the command
 	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
 		// Reading the return value
-		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, 1, response, 1, 100) == HAL_OK)
+		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, response, 1, 100) == HAL_OK)
 			return *response;
 		else
 			return 0x0; // ERROR CODE: Failed to read return value.
@@ -245,7 +233,7 @@ uint8_t getAntenna4DeploymentSystemActivationCount(){
 	// Sending the command
 	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
 		// Reading the return value
-		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, 1, response, 1, 100) == HAL_OK)
+		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, response, 1, 100) == HAL_OK)
 			return *response;
 		else
 			return 0x0; // ERROR CODE: Failed to read return value.
@@ -263,7 +251,7 @@ uint16_t getAntenna1DeploymentSystemActivationTime(){
 	// Sending the command
 	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
 		// Reading the return value
-		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, 1, response, 2, 100) == HAL_OK)
+		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, response, 2, 100) == HAL_OK)
 			return *response;
 		else
 			return 0x0; // ERROR CODE: Failed to read return value.
@@ -281,7 +269,7 @@ uint16_t getAntenna2DeploymentSystemActivationTime(){
 	// Sending the command
 	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
 		// Reading the return value
-		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, 1, response, 2, 100) == HAL_OK)
+		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, response, 2, 100) == HAL_OK)
 			return *response;
 		else
 			return 0x0; // ERROR CODE: Failed to read return value.
@@ -299,7 +287,7 @@ uint16_t getAntenna3DeploymentSystemActivationTime(){
 	// Sending the command
 	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
 		// Reading the return value
-		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, 1, response, 2, 100) == HAL_OK)
+		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, response, 2, 100) == HAL_OK)
 			return *response;
 		else
 			return 0x0; // ERROR CODE: Failed to read return value.
@@ -317,7 +305,7 @@ uint16_t getAntenna4DeploymentSystemActivationTime(){
 	// Sending the command
 	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK){
 		// Reading the return value
-		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, 1, response, 2, 100) == HAL_OK)
+		if (HAL_I2C_Master_Receive(&hi2c1, (ANTS_ADDR << 1) & 0xFF | 0x01, response, 2, 100) == HAL_OK)
 			return *response;
 		else
 			return 0x0; // ERROR CODE: Failed to read return value.
