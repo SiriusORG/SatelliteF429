@@ -82,18 +82,16 @@ bool deployAntenna4WithOverride(uint8_t* maxActivationTime);
 bool cancelDeploymentActivation();
 
 // Telemetry
-uint16_t* getAntennaSystemTemperature();
-uint16_t* getDeploymentStatus();
-uint8_t* getAntenna1DeploymentSystemActivationCount();
-uint8_t* getAntenna2DeploymentSystemActivationCount();
-uint8_t* getAntenna3DeploymentSystemActivationCount();
-uint8_t* getAntenna4DeploymentSystemActivationCount();
-uint16_t* getAntenna1DeploymentSystemActivationTime();
-uint16_t* getAntenna2DeploymentSystemActivationTime();
-uint16_t* getAntenna3DeploymentSystemActivationTime();
-uint16_t* getAntenna4DeploymentSystemActivationTime();
-
-
+uint16_t getAntennaSystemTemperature();
+uint16_t getDeploymentStatus();
+uint8_t getAntenna1DeploymentSystemActivationCount();
+uint8_t getAntenna2DeploymentSystemActivationCount();
+uint8_t getAntenna3DeploymentSystemActivationCount();
+uint8_t getAntenna4DeploymentSystemActivationCount();
+uint16_t getAntenna1DeploymentSystemActivationTime();
+uint16_t getAntenna2DeploymentSystemActivationTime();
+uint16_t getAntenna3DeploymentSystemActivationTime();
+uint16_t getAntenna4DeploymentSystemActivationTime();
 
 
 #endif /* INC_ANTENNADRIVER_H_ */
