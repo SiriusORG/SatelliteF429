@@ -24,6 +24,7 @@
 
 #include <stdint.h>
 #include <stdbool.h>
+#include <string.h>
 
 //-----------------------Variables-------------------------------
 #define A_MICROCONTROLLER_ADDR 0x30
@@ -32,6 +33,9 @@
 
 
 uint8_t ANTS_ADDR = 0x30;
+
+uint8_t antsBufferTransmitter[2];
+uint8_t antsBufferReceiver[2];
 
 //-----------------------Command codes---------------------------
 // Commands
