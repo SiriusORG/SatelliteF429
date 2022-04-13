@@ -191,8 +191,24 @@ uint16_t getDeploymentStatus()
  */
 {
 	uint8_t command = GET_DEPLOYMENT_STATUS;
-	return 0x0;
+	uint16_t results;
+	if (HAL_I2C_Master_Transmit(&hi2c1, (ANTS_ADDR << 1) & 0xFF, (uint8_t*) command, 1, 100) == HAL_OK)
+	{
+		if (HAL_12C_Master_Receive(&hi2c1,((ANTS_ADDR << 1) & 0xFF) | 0x01, antsBufferReceiver, 1,100) == HAL_OK)
+		{
+			return *antsBufferReceiver; //Return Buffer adresse
+		}
+		else
+		{
+			return 0x0; //ERROR CODE : Fail to get return value from slave
+		}
+	}
+	else
+	{
+		return 0x0; //ERROR CODE : Fail to send command to slace
+	}
 }
+
 
 
 uint8_t getAntenna1DeploymentSystemActivationCount(){
